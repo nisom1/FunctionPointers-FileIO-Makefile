@@ -13,7 +13,7 @@ double func5(double);
 // The type returns double and takes one double argument
 // It must be called "funcptr" and must not use any other name.
 
-typedef // ?????
+typedef double (* funcptr)(double);
 
 // create a structure type that has the following attributes
 // please make sure the names are exactly the same
@@ -24,9 +24,11 @@ typedef // ?????
 //  funcptr func;
 // This type must be called Integration
 
-typedef struct
-{
-  // ?????
+typedef struct {
+  double upperlimit;
+  double lowerlimit;
+  int intervals;
+  funcptr func;
 } Integration;
 
 // two functions to be implemented

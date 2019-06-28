@@ -9,7 +9,20 @@ void integrate(Integration * intrg)
 {
   // integrate the function stored in intrg's func
   // store the result in intrg's answer
-
+  
+  
+  double lower = intrg.lowerlimit;
+  double upper = intrg.upperlimit;
+  int intvl = intrg.intervals;
+  double intvlwidth = (upper - lower) / intvl;
+  double sum = 0;
+  for (int cnt = 0; cnt < intvl; cnt ++)
+    {
+      sum += func(lower);
+      lower += intvlwidth;
+    }
+  sum *= intvlwidth;
+  return sum;
 
 
 }
