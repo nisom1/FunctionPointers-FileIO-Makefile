@@ -28,6 +28,7 @@ typedef struct {
   double upperlimit;
   double lowerlimit;
   int intervals;
+  double answer;  
   funcptr func;
 } Integration;
 
