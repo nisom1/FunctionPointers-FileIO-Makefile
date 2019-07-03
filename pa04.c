@@ -28,14 +28,10 @@ int main(int argc, char * * argv)
   // call runIntegrate with argv[1] and argv[2]
   // runIntegrate may return true or false
   // If runIntegrate returns false, main returns EXIT_FAILURE
-
-	value = runIntegrate( argv[1], argv[2] );
-	
-	if (value == 0) {
-	  return EXIT_FAILURE;
-	}
-	else {
-	  return EXIT_SUCCESS;
-	}
+   if ( (runIntegrate( argv[1], argv[2] )) == false)
+     {	  
+      return EXIT_FAILURE;
+     }
   // other return EXIT_SUCCESS
+   return EXIT_SUCCESS;  
 }

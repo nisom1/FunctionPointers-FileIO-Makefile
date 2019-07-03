@@ -1,6 +1,30 @@
 #include <stdio.h>
 #include <stdbool.h>
+#include <math.h>
 #include "pa04.h"
+
+double func1(double x)
+{ 
+  return x; 
+}
+double func2(double x)
+{
+  return x * x;
+}
+double func3(double x)
+{
+  return x * x - 3 * x;
+}
+double func4(double x)
+{
+  return sin(x);
+}
+double func5(double x)
+{
+  return cos(x) + sin(x);
+}
+
+
 
 // must enclose the function by #ifdef TEST_INTEGRATE 
 // and #endif to enable partial credits
@@ -14,11 +38,13 @@ void integrate(Integration * intrg)
   double upper = (*intrg).upperlimit;
   int intvl = (*intrg).intervals;
   double intvlwidth = (upper - lower) / intvl;
-  double answer = (*intrg).answer; // since intrg is a pointer, should there be a different notation??
+  // double answer = (*intrg).answer; // since intrg is a pointer, should there be a different notation??
   double sum = 0;
-  for (int cnt = 0; cnt < intvl; cnt ++)
+  int cnt;
+  
+  for (cnt = 0; cnt < intvl; cnt ++)
     {
-      sum += funcptr(lower); // what is the right function here ??
+      sum += ( (*intrg).func )(lower); // what is the right function here ??
       lower += intvlwidth;
     }
   sum *= intvlwidth;
@@ -38,11 +64,10 @@ bool  runIntegrate(char * infilename, char * outfilename)
 {
   // open the input file name for reading
   FILE * fptr = fopen(infilename, "r");  
-
+  
   // if fopen fails, return false
   if(fptr == NULL)
     {
-      fprintf(stderr, "fopen fail\n");
       return false;
     }
 
@@ -80,7 +105,7 @@ bool  runIntegrate(char * infilename, char * outfilename)
   // check the return value. If the return value is not one
   // close the file and return false
   
-  int check3 = fscanf(fptr, "%lf\n", &intervals.lowerlimit);
+  int check3 = fscanf(fptr, "%lf\n", &function.lowerlimit);
   if (check3 != 1)
    {
     fclose(fptr);
@@ -92,37 +117,38 @@ bool  runIntegrate(char * infilename, char * outfilename)
 
   // open the output file for writing
   // if fopen fails, return false
+  FILE * out_file = fopen(outfilename, "w");
+
   if(fptr == NULL)
     {
-      fprintf(stderr, "fopen fail\n");
       return false;
     }
 
   // create an array of funcptr called funcs with five elements:
-  // func1, func2, ..., func5
   funcptr funcs[] = { func1, func2, func3, func4, func5 };
-
   // go through the elements in funcs 
   // for each element, call integrate for that function
   // write the result (stored in intrg's answer to 
   // the output file. each answer occupies one line (add "\n")
   // use fprintf
- 
+  int retValue;
   int i; // inedx counter through loop
   int numElements = sizeof(funcs) / sizeof(funcptr);        
   for( i = 0; i < numElements; i++)
    {
-    integrate( &funcs[i] ); // do i need the & for individual elements.... yes right 
-    fprintf("%f\n", (i+1), &funcs[i].answer ); 
-    if(&funcs[i].answer < 1) // check the return value of fprintf. 
+    Integration functionA;	
+    functionA.func = funcs[i];
+    integrate( &functionA ); // do i need the & for individual elements.... yes right 
+    retValue = fprintf(out_file, "%lf\n", functionA.answer ); 
+    if(retValue < 1) // check the return value of fprintf. 
      {
-       fclose(fptr);// If it is less one one, close the output
+       fclose(out_file);// If it is less one one, close the output
        return false; // file and return false
      }
    }
   // after going through all functions in funcs
   // close the output file
-  fclose(fptr);
+  fclose(out_file);
 
   // if the function reaches here, return true
   return true;
