@@ -38,13 +38,13 @@ void integrate(Integration * intrg)
   double upper = (*intrg).upperlimit;
   int intvl = (*intrg).intervals;
   double intvlwidth = (upper - lower) / intvl;
-  // double answer = (*intrg).answer; // since intrg is a pointer, should there be a different notation??
+  double answer = (*intrg).answer;
   double sum = 0;
   int cnt;
   
   for (cnt = 0; cnt < intvl; cnt ++)
     {
-      sum += ( (*intrg).func )(lower); // what is the right function here ??
+      sum += ( (*intrg).func )(lower);
       lower += intvlwidth;
     }
   sum *= intvlwidth;
