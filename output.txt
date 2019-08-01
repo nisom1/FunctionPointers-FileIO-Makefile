@@ -1,0 +1,64 @@
+Commit ID tagged for submission: c1409a0cbd86a3493830492cd073afad1bb534f5
+Submission graded at: 2019-08-01 07:13:49
+
+make: MyMakefile: No such file or directory
+make: *** No rule to make target `MyMakefile'.  Stop.
+cc1: warnings being treated as errors
+answer04.c: In function ‘integrate’:
+answer04.c:41: error: unused variable ‘answer’
+make: *** [answer04.o] Error 1
+cc1: warnings being treated as errors
+answer04.c: In function ‘integrate’:
+answer04.c:41: error: unused variable ‘answer’
+/tmp/cc6vyEaw.o: In function `func1':
+/home/min/a/hegden/ECE264/ece264-grader-environment/ece264-grader/repositories/pa04-nisom1/answer04.c:7: multiple definition of `func1'
+/tmp/ccA0mLgi.o:/home/min/a/hegden/ECE264/ece264-grader-environment/ece264-grader/repositories/pa04-nisom1/func1.c:2: first defined here
+/tmp/cc6vyEaw.o: In function `func2':
+/home/min/a/hegden/ECE264/ece264-grader-environment/ece264-grader/repositories/pa04-nisom1/answer04.c:11: multiple definition of `func2'
+/tmp/ccc7ZfEK.o:/home/min/a/hegden/ECE264/ece264-grader-environment/ece264-grader/repositories/pa04-nisom1/func2.c:2: first defined here
+/tmp/cc6vyEaw.o: In function `func3':
+/home/min/a/hegden/ECE264/ece264-grader-environment/ece264-grader/repositories/pa04-nisom1/answer04.c:15: multiple definition of `func3'
+/tmp/cc3YwF4c.o:/home/min/a/hegden/ECE264/ece264-grader-environment/ece264-grader/repositories/pa04-nisom1/func3.c:2: first defined here
+/tmp/cc6vyEaw.o: In function `func4':
+/home/min/a/hegden/ECE264/ece264-grader-environment/ece264-grader/repositories/pa04-nisom1/answer04.c:19: multiple definition of `func4'
+/tmp/cc8rURyF.o:/home/min/a/hegden/ECE264/ece264-grader-environment/ece264-grader/repositories/pa04-nisom1/func4.c:3: first defined here
+/tmp/cc6vyEaw.o: In function `func5':
+/home/min/a/hegden/ECE264/ece264-grader-environment/ece264-grader/repositories/pa04-nisom1/answer04.c:23: multiple definition of `func5'
+/tmp/ccoFhT67.o:/home/min/a/hegden/ECE264/ece264-grader-environment/ece264-grader/repositories/pa04-nisom1/func5.c:3: first defined here
+collect2: ld returned 1 exit status
+/tmp/ccANOyBU.o: In function `func1':
+/home/min/a/hegden/ECE264/ece264-grader-environment/ece264-grader/repositories/pa04-nisom1/answer04.c:7: multiple definition of `func1'
+/tmp/ccmtBk2B.o:/home/min/a/hegden/ECE264/ece264-grader-environment/ece264-grader/repositories/pa04-nisom1/func1.c:2: first defined here
+/tmp/ccANOyBU.o: In function `func2':
+/home/min/a/hegden/ECE264/ece264-grader-environment/ece264-grader/repositories/pa04-nisom1/answer04.c:11: multiple definition of `func2'
+/tmp/cc50tc54.o:/home/min/a/hegden/ECE264/ece264-grader-environment/ece264-grader/repositories/pa04-nisom1/func2.c:2: first defined here
+/tmp/ccANOyBU.o: In function `func3':
+/home/min/a/hegden/ECE264/ece264-grader-environment/ece264-grader/repositories/pa04-nisom1/answer04.c:15: multiple definition of `func3'
+/tmp/ccu9cYay.o:/home/min/a/hegden/ECE264/ece264-grader-environment/ece264-grader/repositories/pa04-nisom1/func3.c:2: first defined here
+/tmp/ccANOyBU.o: In function `func4':
+/home/min/a/hegden/ECE264/ece264-grader-environment/ece264-grader/repositories/pa04-nisom1/answer04.c:19: multiple definition of `func4'
+/tmp/ccsYbwk1.o:/home/min/a/hegden/ECE264/ece264-grader-environment/ece264-grader/repositories/pa04-nisom1/func4.c:3: first defined here
+/tmp/ccANOyBU.o: In function `func5':
+/home/min/a/hegden/ECE264/ece264-grader-environment/ece264-grader/repositories/pa04-nisom1/answer04.c:23: multiple definition of `func5'
+/tmp/cc7f7Sxu.o:/home/min/a/hegden/ECE264/ece264-grader-environment/ece264-grader/repositories/pa04-nisom1/func5.c:3: first defined here
+collect2: ld returned 1 exit status
+
+Checking Makefile (20%)
+make testall : Could not find 5 output files with names output_<test file> (e.g. output_test1), Failed
+
+
+Compiling student's code (exe pa04_stu) : Failed
+Compiling student's pa04.c with instructor's answer04.c (exe pa04_main) : Passed
+Compiling student's runIntegrate with instructor's answer key (exe pa04_file, pa04_check_ans) : Failed
+
+Check main (20%): 
+./pa04_main : Correct Return Code
+
+./pa04_main testdir/test1 output_test1 : Correct Return Code
+
+./pa04_main testdir/test1 output_test1 unneccesary_arg : Correct Return Code
+
+
+Checking with different input and output files (30%): Could not run the test as compilation failed
+
+Checking integration result (30%): Could not run the test as compilation failed
